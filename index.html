@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pàgina Web Amb Imatges</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #000; /* Color de fons negre */
+            font-family: 'Helvetica', sans-serif;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 3s ease-in-out; /* Transició més lenta de 3 segons */
+        }
+
+        img.active {
+            opacity: 1;
+        }
+
+        .contact-info-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff; /* Color del text blanc */
+        }
+
+        .page-name {
+            font-size: 14px;
+            line-height: 1; /* Ajusta aquest valor per controlar l'espai entre línies del nom de la pàgina */
+        }
+
+        .contact-info {
+            font-size: 14px;
+            line-height: 0; /* Ajusta aquest valor per controlar l'espai entre línies de la informació de contacte */
+        }
+    </style>
+</head>
+<body>
+
+    <img src="x1.jpg" alt="Imatge 1" class="active">
+    <img src="x2.jpg" alt="Imatge 2">
+    <img src="x3.jpg" alt="Imatge 3">
+    <img src="x4.jpg" alt="Imatge 4">
+    <img src="x5.jpg" alt="Imatge 5">
+    <img src="x6.jpg" alt="Imatge 6">
+    <img src="x7.jpg" alt="Imatge 7">
+    <img src="x8.jpg" alt="Imatge 8">
+    <img src="x9.jpg" alt="Imatge 9">
+    <img src="x10.jpg" alt="Imatge 10">
+    <img src="x11.jpg" alt="Imatge 11">
+    <img src="x12.jpg" alt="Imatge 12">
+    <img src="x13.jpg" alt="Imatge 13">
+    <img src="x14.jpg" alt="Imatge 14">
+    <img src="x15.jpg" alt="Imatge 15">
+    <img src="x16.jpg" alt="Imatge 16">
+    <img src="x17.jpg" alt="Imatge 17">
+    <img src="x18.jpg" alt="Imatge 18">
+    <img src="x19.jpg" alt="Imatge 19">
+    <img src="x20.jpg" alt="Imatge 20">
+
+
+    <div class="contact-info-container">
+        <div class="page-name">
+            <p>DIRECTES</p>
+        </div>
+        <div class="contact-info">
+            <p>08500 Vic, Barcelona</p>
+            <p>info@directes.info</p>
+        </div>
+    </div>
+
+    <script>
+        var images = document.querySelectorAll('img');
+        var currentIndex = 0;
+
+        function changeImage() {
+            var randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * images.length);
+            } while (randomIndex === currentIndex);
+
+            images[currentIndex].classList.remove('active');
+            currentIndex = randomIndex;
+            images[currentIndex].classList.add('active');
+        }
+
+        // Primera crida per garantir que no comenci sempre per "x1"
+        changeImage();
+
+        // Després, es crida cada 7 segons
+        setInterval(changeImage, 7000);
+    </script>
+
+</body>
+</html>
+
