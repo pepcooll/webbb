@@ -25,7 +25,8 @@
             top: 0;
             left: 0;
             opacity: 0;
-            transition: opacity 3s ease-in-out; /* Transició més lenta de 3 segons */
+            transition: opacity 2s ease-in-out; /* Transició més lenta de 7 segons */
+            cursor: pointer; /* Afegit per canviar el cursor */
         }
 
         img.active {
@@ -54,27 +55,28 @@
 </head>
 <body>
 
-    <img src="x1.jpg" alt="Imatge 1" class="active">
-    <img src="x2.jpg" alt="Imatge 2">
-    <img src="x3.jpg" alt="Imatge 3">
-    <img src="x4.jpg" alt="Imatge 4">
-    <img src="x5.jpg" alt="Imatge 5">
-    <img src="x6.jpg" alt="Imatge 6">
-    <img src="x7.jpg" alt="Imatge 7">
-    <img src="x8.jpg" alt="Imatge 8">
-    <img src="x9.jpg" alt="Imatge 9">
-    <img src="x10.jpg" alt="Imatge 10">
-    <img src="x11.jpg" alt="Imatge 11">
-    <img src="x12.jpg" alt="Imatge 12">
-    <img src="x13.jpg" alt="Imatge 13">
-    <img src="x14.jpg" alt="Imatge 14">
-    <img src="x15.jpg" alt="Imatge 15">
-    <img src="x16.jpg" alt="Imatge 16">
-    <img src="x17.jpg" alt="Imatge 17">
-    <img src="x18.jpg" alt="Imatge 18">
-    <img src="x19.jpg" alt="Imatge 19">
-    <img src="x20.jpg" alt="Imatge 20">
-
+    <img src="x1.jpg" alt="Imatge 1" class="active" onclick="changeImage()">
+    <img src="x2.jpg" alt="Imatge 2" onclick="changeImage()">
+    <img src="x3.jpg" alt="Imatge 3" onclick="changeImage()">
+    <img src="x4.jpg" alt="Imatge 4" onclick="changeImage()">
+    <img src="x5.jpg" alt="Imatge 5" onclick="changeImage()">
+    <img src="x6.jpg" alt="Imatge 6" onclick="changeImage()">
+    <img src="x7.jpg" alt="Imatge 7" onclick="changeImage()">
+    <img src="x8.jpg" alt="Imatge 8" onclick="changeImage()">
+    <img src="x9.jpg" alt="Imatge 9" onclick="changeImage()">
+    <img src="x10.jpg" alt="Imatge 10" onclick="changeImage()">
+    <img src="x11.jpg" alt="Imatge 11" onclick="changeImage()">
+    <img src="x12.jpg" alt="Imatge 12" onclick="changeImage()">
+    <img src="x13.jpg" alt="Imatge 13" onclick="changeImage()">
+    <img src="x14.jpg" alt="Imatge 14" onclick="changeImage()">
+    <img src="x15.jpg" alt="Imatge 15" onclick="changeImage()">
+    <img src="x16.jpg" alt="Imatge 16" onclick="changeImage()">
+    <img src="x17.jpg" alt="Imatge 17" onclick="changeImage()">
+    <img src="x18.jpg" alt="Imatge 18" onclick="changeImage()">
+    <img src="x19.jpg" alt="Imatge 19" onclick="changeImage()">
+    <img src="x20.jpg" alt="Imatge 20" onclick="changeImage()">
+    <!-- Afegix onclick a les altres imatges -->
+    <!-- ... (afegeix onclick a les altres imatges) -->
 
     <div class="contact-info-container">
         <div class="page-name">
@@ -89,6 +91,8 @@
     <script>
         var images = document.querySelectorAll('img');
         var currentIndex = 0;
+        var intervalId; // Variable per emmagatzemar l'ID de l'interval
+        var lastManualChange = Date.now(); // Variable per emmagatzemar l'últim canvi manual
 
         function changeImage() {
             var randomIndex;
@@ -99,15 +103,31 @@
             images[currentIndex].classList.remove('active');
             currentIndex = randomIndex;
             images[currentIndex].classList.add('active');
+            lastManualChange = Date.now(); // Actualitza el temps de l'últim canvi manual
+
+            // Reinicia el temporitzador cada cop que es canvia la imatge
+            clearInterval(intervalId);
+            startInterval();
+        }
+
+        function startInterval() {
+            // Inicia l'interval i emmagatzema l'ID a la variable intervalId
+            intervalId = setInterval(checkElapsedTime, 1000);
+        }
+
+        function checkElapsedTime() {
+            // Comprova si han passat 7 segons des de l'últim canvi manual
+            if (Date.now() - lastManualChange >= 7000) {
+                changeImage();
+            }
         }
 
         // Primera crida per garantir que no comenci sempre per "x1"
         changeImage();
 
-        // Després, es crida cada 7 segons
-        setInterval(changeImage, 7000);
+        // Inicia l'interval per primera vegada
+        startInterval();
     </script>
 
 </body>
 </html>
-
