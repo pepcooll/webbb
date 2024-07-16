@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pàgina Web Amb Imatges</title>
+    <title>CarmeCatorze</title>
+    <link rel="icon" href="logo_icona/cc.png" type="image/png">
+    <meta name="description" content="CarmeCatorze és un estudi d'Arquitectura i disseny escenogràfic dirigit per Pep Coll, Martí Font i Marc Saborit. ">
+
     <style>
         body {
             margin: 0;
@@ -15,9 +18,10 @@
             height: 100vh;
             background-color: #000; /* Color de fons negre */
             font-family: 'Helvetica', sans-serif;
+            cursor: default
         }
 
-        img {
+        .background-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -26,112 +30,105 @@
             left: 0;
             opacity: 0;
             transition: opacity 2s ease-in-out;
-            cursor: pointer;
+            cursor: url('cursor.png'), auto; /* Custom cursor */
         }
 
-        img.active {
+        .background-image.active {
             opacity: 1;
         }
 
         .contact-info-container {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            bottom: 15px;
+            left: 10%;
             transform: translate(-50%, -50%);
-            text-align: center;
+            text-align: left;
             color: #fff; /* Color del text blanc */
+            z-index: 2;
         }
 
         .page-name {
-            font-size: 14px;
-            line-height: 1;
+            font-size: 12px;
+            line-height: 0;
+            z-index: 2;
         }
 
         .contact-info {
-            font-size: 14px;
+            font-size: 12px;
             line-height: 0;
+            z-index: 2;
         }
     </style>
 </head>
 <body>
-
-    <img src="x1.jpg" alt="Imatge 1" class="active">
-    <img src="x2.jpg" alt="Imatge 2">
-    <img src="x3.jpg" alt="Imatge 3">
-    <img src="x4.jpg" alt="Imatge 4">
-    <img src="x5.jpg" alt="Imatge 5">
-    <img src="x6.jpg" alt="Imatge 6">
-    <img src="x7.jpg" alt="Imatge 7">
-    <img src="x8.jpg" alt="Imatge 8">
-    <img src="x9.jpg" alt="Imatge 9">
-    <img src="x10.jpg" alt="Imatge 10">
-    <img src="x11.jpg" alt="Imatge 11">
-    <img src="x12.jpg" alt="Imatge 12">
-    <img src="x13.jpg" alt="Imatge 13">
-    <img src="x14.jpg" alt="Imatge 14">
-    <img src="x15.jpg" alt="Imatge 15">
-    <img src="x16.jpg" alt="Imatge 16">
-    <img src="x17.jpg" alt="Imatge 17">
-    <img src="x18.jpg" alt="Imatge 18">
-    <img src="x19.jpg" alt="Imatge 19">
-    <img src="x20.jpg" alt="Imatge 20">
-    <img src="x21.jpg" alt="Imatge 21">
-
     <div class="contact-info-container">
         <div class="page-name">
-            <p>carmecatorze</p>
+            <p>CarmeCatorze</p>
         </div>
         <div class="contact-info">
-            <p>08500 Vic, Barcelona</p>
             <p>directes@didactics.info</p>
         </div>
     </div>
 
+    <img src="imatges/x1.webp" alt="Imatge 1" class="background-image" loading="lazy">
+    <img src="imatges/x2.webp" alt="Imatge 2" class="background-image" loading="lazy">
+    <img src="imatges/x3.webp" alt="Imatge 3" class="background-image" loading="lazy">
+    <img src="imatges/x4.webp" alt="Imatge 4" class="background-image" loading="lazy">
+    <img src="imatges/x5.webp" alt="Imatge 5" class="background-image" loading="lazy">
+    <img src="imatges/x6.webp" alt="Imatge 6" class="background-image" loading="lazy">
+    <img src="imatges/x7.webp" alt="Imatge 7" class="background-image" loading="lazy">
+    <img src="imatges/x8.webp" alt="Imatge 8" class="background-image" loading="lazy">
+    <img src="imatges/x9.webp" alt="Imatge 9" class="background-image" loading="lazy">
+    <img src="imatges/x10.webp" alt="Imatge 10" class="background-image" loading="lazy">
+    <img src="imatges/x11.webp" alt="Imatge 11" class="background-image" loading="lazy">
+    <img src="imatges/x12.webp" alt="Imatge 12" class="background-image" loading="lazy">
+    <img src="imatges/x13.webp" alt="Imatge 13" class="background-image" loading="lazy">
+    <img src="imatges/x14.webp" alt="Imatge 14" class="background-image" loading="lazy">
+    <img src="imatges/x15.webp" alt="Imatge 15" class="background-image" loading="lazy">
+    <img src="imatges/x16.webp" alt="Imatge 16" class="background-image" loading="lazy">
+    <img src="imatges/x17.webp" alt="Imatge 17" class="background-image" loading="lazy">
+    <img src="imatges/x18.webp" alt="Imatge 18" class="background-image" loading="lazy">
+    <img src="imatges/x19.webp" alt="Imatge 19" class="background-image" loading="lazy">
+    <img src="imatges/x20.webp" alt="Imatge 20" class="background-image" loading="lazy">
+    <img src="imatges/x21.webp" alt="Imatge 21" class="background-image" loading="lazy">
+    <img src="imatges/x22.webp" alt="Imatge 22" class="background-image" loading="lazy">
+
     <script>
-        var images = document.querySelectorAll('img');
-        var currentIndex = 0;
-        var intervalId;
-        var lastManualChange = Date.now();
+        document.addEventListener("DOMContentLoaded", function() {
+            var images = document.querySelectorAll('.background-image');
+            var currentIndex = 0;
+            var intervalId;
 
-        // Funció per barallar les imatges
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
             }
-        }
 
-        // Crea un ordre aleatori d'índexs
-        var imageIndices = Array.from(images.keys());
-        shuffle(imageIndices);
+            var imageIndices = Array.from(images.keys());
+            shuffle(imageIndices);
 
-        function changeImage(manual = false) {
-            images[imageIndices[currentIndex]].classList.remove('active');
-            currentIndex = (currentIndex + 1) % images.length;
-            images[imageIndices[currentIndex]].classList.add('active');
-            if (manual) {
-                lastManualChange = Date.now();
-                clearInterval(intervalId);
-                startInterval();
+            function changeImage() {
+                images[imageIndices[currentIndex]].classList.remove('active');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[imageIndices[currentIndex]].classList.add('active');
+
             }
-        }
 
-        function startInterval() {
-            intervalId = setInterval(checkElapsedTime, 7000);
-        }
-
-        function checkElapsedTime() {
-            if (Date.now() - lastManualChange >= 7000) {
-                changeImage();
+            function startInterval() {
+                intervalId = setInterval(changeImage, 7000);
             }
-        }
 
-        images.forEach((img, index) => {
-            img.addEventListener('click', () => changeImage(true));
+            changeImage(); // Inicializa la primera imagen
+            startInterval();
+            // Add event listener for click to change image
+            document.addEventListener('click', function() {
+                clearInterval(intervalId); // Clear the current interval
+                changeImage(); // Change the image immediately
+                startInterval(); // Restart the interval
+            });
         });
-
-        changeImage();
-        startInterval();
     </script>
 
 </body>
